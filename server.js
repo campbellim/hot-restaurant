@@ -1,13 +1,7 @@
 var express = require("express");
 var path = require("path");
-<<<<<<< HEAD
 var api = require('./routes/apiRoutes')(app);
 var htmlRoute = require('./routes/htmlRoutes')(app, path);
-=======
-var api = require('./routes/apiRoutes');
-var htmlRoute = require('./routes/htmlRoutes');
-
->>>>>>> 84281992724b004e663e635c921081c822037193
 
 var app = express();
 
