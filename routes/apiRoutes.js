@@ -1,5 +1,5 @@
-var tables = require("tables");
-var waiting = require("waiting")
+var tables = require("./tables");
+var waiting = require("./waiting");
 app.get("/api/tables", function(req, res) {
     return res.json(tables);
   });
