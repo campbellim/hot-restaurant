@@ -1,5 +1,7 @@
 var express = require("express");
 var path = require("path");
+var api = require('./routes/apiRoutes')(app);
+var htmlRoute = require('./routes/htmlRoutes')(app);
 
 // Sets up the Express App
 // =============================================================
@@ -8,28 +10,6 @@ var PORT = process.env.PORT || 3000;
 //parses url
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-//routes
-
-app.get("/api/tables", function(req, res) {
-  return res.json(reservations);
-});
-
-
-//for new reservations
-app.post("/api/reserve", function(req, res) {
-  
-  var newreservation = req.body;
-
-
-  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
-
-  console.log(newreservation);
-
-  reservations.push(newreservation);
-
-  res.json(newreservation);
-});
 
 //listening
 app.listen(PORT, function() { 
