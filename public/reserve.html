@@ -11,13 +11,13 @@
         crossorigin="anonymous">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
         crossorigin="anonymous">
 
-    <title>Book - Hot Restuarant</title>
+    <title>Booking - Hot Restuarant</title>
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,13 +32,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="/index">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">Tables</a>
+                <a class="nav-link" href="/tables">Tables</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="book.html">Book <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/reserve">Book <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
@@ -82,12 +82,15 @@
     </div>
 
     <script>
+
         // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
         // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
         // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
         // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
         $("#submit").on("click", function (event) {
             event.preventDefault();
+
             // Here we grab the form elements
             var newReservation = {
                 customerName: $("#inputName").val().trim(),
@@ -95,28 +98,37 @@
                 customerEmail: $("#inputPhone").val().trim(),
                 customerID: $("#inputID").val().trim()
             };
+
             console.log(newReservation);
+
             // This line is the magic. It"s very similar to the standard ajax function we used.
             // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
             // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
             // depending on if a tables is available or not.
+
             $.post("/api/tables", newReservation,
                 function (data) {
+
                     // If a table is available... tell user they are booked.
                     if (data) {
                         alert("Yay! You are officially booked!");
                     }
+
                     // If a table is available... tell user they on the waiting list.
                     else {
                         alert("Sorry you are on the wait list");
                     }
+
                     // Clear the form when submitting
                     $("#inputName").val("");
                     $("#inputEmail").val("");
                     $("#inputPhone").val("");
                     $("#inputID").val("");
+
                 });
+
         });
+
     </script>
 
 
