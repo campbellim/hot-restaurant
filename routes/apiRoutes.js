@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 var tables = require("../data/tableData");
 var waiting = require("../data/waitinglistData");
+// var express = require("express");
+// var app = express();
 
 module.exports = function(app){
   app.get("/api/tables", function(req, res) {
-=======
-var tables = require("../data/tableData.js");
-var waiting = require("../data/waitinglistData.js");
-app.get("/api/tables", function(req, res) {
->>>>>>> 6b09d5d99adfdcae4b64b3f4fabaa814c5ad357a
     return res.json(tables);
   });
   app.get("/api/waiting", function(req, res) {
