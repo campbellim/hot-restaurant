@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+nav{
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #222;
+    color: #fff;
+}
+
+.jumbotron-fluid{
+    background-image: linear-gradient(to right, red , yellow);
+}
+
+.policy{
+    margin-left: 7%;
+    margin-top: -3%
+}
+
+#form{
+    margin-top: 7%;
+}
+
+input[type="text"]{
+    background-color: rgb(61, 61, 61);
+    opacity: .8;
+}
+
+input::placeholder{
+    color: whitesmoke;
+}
