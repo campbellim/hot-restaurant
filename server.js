@@ -10,15 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //routes
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
-});
-
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
-});
-
-
 
 app.get("/api/tables", function(req, res) {
   return res.json(reservations);
