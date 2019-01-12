@@ -30,3 +30,10 @@ input[type="text"]{
 input::placeholder{
     color: whitesmoke;
 }
+
+#home {
+    background-color: black;
+    opacity: .8;
+    background: rgba(24, 18, 15, 0.808);
+    color: darkgoldenrod
+}
