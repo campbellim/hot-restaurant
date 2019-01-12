@@ -1,7 +1,7 @@
 var express = require("express");
 var path = require("path");
 var api = require('./routes/apiRoutes')(app);
-var htmlRoute = require('./routes/htmlRoutes')(app);
+var htmlRoute = require('./routes/htmlRoutes')(app, path);
 
 // Sets up the Express App
 // =============================================================
