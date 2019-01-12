@@ -8,18 +8,26 @@ module.exports = function(app){
     return res.json(tables);
   });
   app.get("/api/waiting", function(req, res) {
-    return res.json(waiting.waiting);
+    return res.json(waiting);
   });
-  reservations = [];
-
+  
 //for new reservations
-  app.post("/api/reserve", function(req, res) {
-    var newreservation = req.body;
-    //newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
-    console.log(newreservation);
-    reservations.push(newreservation);
-    res.json(newreservation);
+app.post("/api/reserve", function(req, res) { 
+  var newtable = req.body;
+//newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
+  console.log(newtable);
+  reservationDestination(newtable, res);
 });
+
+function reservationDestination(newtable, res) {
+  if(tables.length < 5) {
+    tables.push(newtable);
+  }
+  else {
+    waiting.push(newtable);
+  }
+  res.json(newtable);
+}
 }
 
 
