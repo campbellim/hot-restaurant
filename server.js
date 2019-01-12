@@ -1,15 +1,29 @@
 var express = require("express");
 var path = require("path");
+<<<<<<< HEAD
 var api = require('./routes/apiRoutes')(app);
 var htmlRoute = require('./routes/htmlRoutes')(app, path);
+=======
+var api = require('./routes/apiRoutes');
+var htmlRoute = require('./routes/htmlRoutes');
+
+>>>>>>> 84281992724b004e663e635c921081c822037193
+
+var app = express();
+
+
+//parses url
+//app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 
 // Sets up the Express App
 // =============================================================
-var app = express();
+
+api(app);
+htmlRoute(app, path);
 var PORT = process.env.PORT || 3000;
-//parses url
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 //listening
 app.listen(PORT, function() { 

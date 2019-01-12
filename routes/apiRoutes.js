@@ -1,5 +1,7 @@
 var tables = require("../data/tableData");
 var waiting = require("../data/waitinglistData");
+// var express = require("express");
+// var app = express();
 
 module.exports = function(app){
   app.get("/api/tables", function(req, res) {
@@ -9,20 +11,19 @@ module.exports = function(app){
     return res.json(waiting);
   });
   
-
 //for new reservations
 app.post("/api/reserve", function(req, res) {
   
-  var newreservation = req.body;
+  var newtable = req.body;
 
 
-  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
+//newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newreservation);
+  console.log(newtable);
 
-  reservations.push(newreservation);
+  tables.push(newtable);
 
-  res.json(newreservation);
+  res.json(newtable);
 });
 }
 
