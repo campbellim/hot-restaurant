@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+nav{
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #222;
+    color: black;
+    background-image: url(firefire.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+      
+}
+
+.jumbotron-fluid{
+    background-image: linear-gradient(to right, red , yellow);
+}
+
+#home {
+    background-color: black;
+    opacity: .8;
+    background: rgba(24, 18, 15, 0.808);
+    color: darkgoldenrod
+}
