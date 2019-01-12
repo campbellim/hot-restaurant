@@ -11,20 +11,19 @@ module.exports = function(app){
     return res.json(waiting);
   });
   
-
 //for new reservations
 app.post("/api/reserve", function(req, res) {
   
-  var newreservation = req.body;
+  var newtable = req.body;
 
 
-  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
+//newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newreservation);
+  console.log(newtable);
 
-  reservations.push(newreservation);
+  tables.push(newtable);
 
-  res.json(newreservation);
+  res.json(newtable);
 });
 }
 

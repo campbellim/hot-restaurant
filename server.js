@@ -3,15 +3,22 @@ var path = require("path");
 var api = require('./routes/apiRoutes');
 var htmlRoute = require('./routes/htmlRoutes');
 
+
+var app = express();
+
+
+//parses url
+//app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+
 // Sets up the Express App
 // =============================================================
-var app = express();
+
 api(app);
-htmlRoute(app);
+htmlRoute(app, path);
 var PORT = process.env.PORT || 3000;
-//parses url
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 //listening
 app.listen(PORT, function() { 
