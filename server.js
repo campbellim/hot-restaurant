@@ -1,46 +1,26 @@
 var express = require("express");
 var path = require("path");
+var api = require('./routes/apiRoutes');
+var htmlRoute = require('./routes/htmlRoutes');
+
+
+var app = express();
+
+
+//parses url
+//app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 
 // Sets up the Express App
 // =============================================================
-var app = express();
+
+api(app);
+htmlRoute(app, path);
 var PORT = process.env.PORT || 3000;
-//parses url
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-//routes
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
-});
-
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
-});
-
-
-
-app.get("/api/tables", function(req, res) {
-  return res.json(reservations);
-});
-
-
-//for new reservations
-app.post("/api/reserve", function(req, res) {
-  
-  var newreservation = req.body;
-
-
-  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
-
-  console.log(newreservation);
-
-  reservations.push(newreservation);
-
-  res.json(newreservation);
-});
 
 //listening
-server.listen(PORT, function() { 
+app.listen(PORT, function() { 
 console.log("Server listening on: http://localhost:" + PORT);
 })
