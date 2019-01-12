@@ -12,19 +12,22 @@ module.exports = function(app){
   });
   
 //for new reservations
-app.post("/api/reserve", function(req, res) {
-  
+app.post("/api/reserve", function(req, res) { 
   var newtable = req.body;
-
-
 //newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
-
   console.log(newtable);
-
-  tables.push(newtable);
-
-  res.json(newtable);
+  reservationDestination(newtable, res);
 });
+
+function reservationDestination(newtable, res) {
+  if(tables.length < 5) {
+    tables.push(newtable);
+  }
+  else {
+    waiting.push(newtable);
+  }
+  res.json(newtable);
+}
 }
 
 
